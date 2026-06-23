@@ -22,3 +22,4 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
 # Fresh run with new token
 # Final run with correct username
+# Final run with correct username
