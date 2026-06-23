@@ -6,4 +6,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run a test
-        run: echo "Starting clean pipeline"
+        run: echo "Starting fresh pipeline"
