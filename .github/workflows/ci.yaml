@@ -24,4 +24,3 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t quakewatch:${{ github.sha }} .
-
