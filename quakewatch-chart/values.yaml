@@ -1,0 +1,7 @@
+replicaCount: 2
+
+image:
+  repository: cohenelyotam/quakewatch
+  tag: latest
+
+servicePort: 5000

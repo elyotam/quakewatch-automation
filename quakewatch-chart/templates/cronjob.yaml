@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: quakewatch-health-check
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: health-check
+            image: busybox
+            args:
+            - /bin/sh
+            - -c
+            - echo "Checking QuakeWatch status..." && wget -qO- http://quakewatch-service
+          restartPolicy: OnFailure
