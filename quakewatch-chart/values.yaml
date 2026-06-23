@@ -5,3 +5,4 @@ image:
   tag: latest
 
 servicePort: 5000
+replicaCount: 2
