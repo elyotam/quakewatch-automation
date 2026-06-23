@@ -1,9 +1,12 @@
-name: CI
+name: CI Pipeline
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - main
 
 jobs:
-  build:
+  ci-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,4 +20,7 @@ jobs:
         run: pip install pylint
 
       - name: Run Pylint
-        run: pylint .
+        run: pylint *.py
+
+      - name: Build Docker image
+        run: docker build -t my-app:${{ github.sha }} .
