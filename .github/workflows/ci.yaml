@@ -1,17 +1,21 @@
 name: CI
 on:
   push:
-    branches:
-      - '**'
-      - '!main'
+    branches-ignore:
+      - 'main'
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install Pylint
+        run: pip install pylint
       - name: Run Pylint
-        run: |
-          pip install pylint
-          pylint *.py
-      - name: Build Docker
-        run: docker build . -t my-app
+        run: pylint *.py
+      - name: Build Docker Image
+        run: docker build . -t my-app:test
