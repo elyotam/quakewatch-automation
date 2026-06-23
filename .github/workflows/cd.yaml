@@ -21,3 +21,4 @@ jobs:
           docker build . -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
 # Fresh run with new token
+# Final run with correct username
